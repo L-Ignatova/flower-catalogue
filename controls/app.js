@@ -25,8 +25,8 @@ function decorateContext(ctx, next) {
 }
 
 function setUserNav() {
-    const email = sessionStorage.getItem('email');
-    if (email) {
+    const userEmail = sessionStorage.getItem('userEmail');
+    if (userEmail) {
         document.getElementById('guest').style.display = 'none';
         document.getElementById('user').style.display = 'flex';
     } else {

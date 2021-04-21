@@ -1,4 +1,5 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
+import { login } from "../api/api.js";
 
 const loginTemplate = (onSubmit) => html`
 <section class="login-page">
@@ -18,7 +19,7 @@ export function loginPage(context) {
     context.render(loginTemplate(onSubmit));
 
 
-    function onSubmit(ev) {
+    async function onSubmit(ev) {
         ev.preventDefault();
 
         const formData = new FormData(ev.target);
@@ -29,7 +30,8 @@ export function loginPage(context) {
             return alert('All fields are required!');
         }
 
-        console.log(email, password);
+        await login(email, password);
+
         context.setUserNav();
         context.page.redirect('/catalog');
     }
