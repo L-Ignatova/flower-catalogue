@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+    <title>Flower Catalogue Demo</title>
+    <script src="/controls/api/config.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="logo">
+                <p><a href="#">Flower Catalogue</a></p>
+            </div>
+            <div class="nav-menu">
+                <ul id="user">
+                    <li><a href="#">Garden</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+                <ul id="guest">
+                    <li><a href="#">Feed</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="container">
+        <section class="landing-page">
+            <video src="/resources/video.mp4" muted loop autoplay poster="/resources/alt-background.jpg"></video>
+            <div class="wrapper">
+                <section class="main-content">
+                    <h1>Spring is here</h1>
+                    <h2>Flowers for every occasion</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem accusantium iusto reiciendis
+                        veniam.
+                        Quas aperiam aspernatur, deleniti fugiat est necessitatibus asperiores quaerat molestiae. Illum,
+                        dolores itaque. Qui magnam consequatur vel?</p>
+                    <button class="discover-btn"><a href="#">Discover</a></button>
+                </section>
+
+                <section class="pause-btn"></section>
+
+                <section class="social-media">
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <!-- <section class="feed">
+            <div class="wrapper">
+                <article class="flower-card">
+                    <img src="/resources/bouquet_1.jpg" alt="flower 1">
+                    <section class="flower-content">
+                        <section class="flower-text">
+                            <h4>Majesty palm</h4>
+                            <p>$15</p>
+                        </section>
+                        <section class="flower-details">
+                            <button class="details-btn">Details</button>
+                        </section>
+                    </section>
+                </article>
+                <article class="flower-card">
+                    <img src="/resources/bouquet_2.jpg" alt="flower 1">
+                    <section class="flower-content">
+                        <section class="flower-text">
+                            <h4>Majesty palm</h4>
+                            <p>$15</p>
+                        </section>
+                        <section class="flower-details">
+                            <button class="details-btn">Details</button>
+                        </section>
+                    </section>
+                </article>
+                <article class="flower-card">
+                    <img src="/resources/bouquet_3.jpg" alt="flower 1">
+                    <section class="flower-content">
+                        <section class="flower-text">
+                            <h4>Majesty palm</h4>
+                            <p>$15</p>
+                        </section>
+                        <section class="flower-details">
+                            <button class="details-btn">Details</button>
+                        </section>
+                    </section>
+                </article>
+                <article class="flower-card">
+                    <img src="/resources/bouquet_4.jpg" alt="flower 1">
+                    <section class="flower-content">
+                        <section class="flower-text">
+                            <h4>Majesty palm</h4>
+                            <p>$15</p>
+                        </section>
+                        <section class="flower-details">
+                            <button class="details-btn">Details</button>
+                        </section>
+                    </section>
+                </article>
+                <article class="flower-card">
+                    <img src="/resources/bouquet_5.jpg" alt="flower 1">
+                    <section class="flower-content">
+                        <section class="flower-text">
+                            <h4>Majesty palm</h4>
+                            <p>$15</p>
+                        </section>
+                        <section class="flower-details">
+                            <button class="details-btn">Details</button>
+                        </section>
+                    </section>
+                </article>
+            </div>
+        </section> -->
+
+        <!-- <section class="details-page">
+            <div class="wrapper">
+                <section class="details-card">
+                    <img src="/resources/bouquet_5.jpg" alt="flower1">
+                    <article class="card-contents">
+                        <div class="text">
+                            <h2>Majesty palm</h2>
+                            <p><span>Stems: </span>Lily, chrisanteum, roses</p>
+                            <p><span>Height: </span>35 cm</p>
+                            <p><span>Size: </span>
+                                <select name="size" id="size-choice">
+                                    <option value="small">small (3pcs)</option>
+                                    <option value="medium">medium (5 pcs)</option>
+                                    <option value="big">big (9pcs)</option>
+                                </select>
+                            </p>
+                            <p><span>Price: </span>$15</p>
+                        </div>
+                        <div class="buttons">
+                            <p>Likes: 15 <i class="fas fa-heart"></i></p>
+                            <div class="edit-del-btns">
+                                <button class="edit">edit</button>
+                                <button class="delete">delete</button>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </section> -->
+
+        <!-- <section class="login-page">
+            <div class="wrapper">
+                <form id="login-form" action="login">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder=" your email...">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder=" your password...">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </section> -->
+
+        <!-- <section class="register-page">
+            <div class="wrapper">
+                <form id="login-form" action="login">
+                    <label for="first-name">Your name:</label>
+                    <input type="text" name="name" id="name" placeholder=" first and last name...">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder=" your email...">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder=" your password...">
+                    <label for="password">Repeat password:</label>
+                    <input type="password" name="repass" id="repass" placeholder=" your password again...">
+                    <input type="submit" value="Sign up">
+                </form>
+            </div>
+        </section> -->
+
+        <!-- <section class="profile">
+            <div class="wrapper">
+                <section class="profile-info">
+                    <img src="/resources/profile.jpg" alt="">
+                    <ul class="profile-details">
+                        <li><span>Email: </span> demo@demo</li>
+                        <li><span>Name: </span> demo demo</li>
+                        <button class="add-new-flower">Add flower</button>
+                    </ul>
+                </section>
+                <h1 class="title">Your garden:</h1>
+                <section id="profile-feed">
+                    <article class="flower-card">
+                        <img src="/resources/bouquet_4.jpg" alt="flower 1">
+                        <section class="flower-content">
+                            <section class="flower-text">
+                                <h4>Majesty palm</h4>
+                                <p>$15</p>
+                            </section>
+                            <section class="flower-details">
+                                <button class="details-btn">Details</button>
+                            </section>
+                        </section>
+                    </article>
+                    <article class="flower-card">
+                        <img src="/resources/bouquet_5.jpg" alt="flower 1">
+                        <section class="flower-content">
+                            <section class="flower-text">
+                                <h4>Majesty palm</h4>
+                                <p>$15</p>
+                            </section>
+                            <section class="flower-details">
+                                <button class="details-btn">Details</button>
+                            </section>
+                        </section>
+                    </article>
+                </section>
+                <div id="empty-profile-feed">
+                    <h2>Nothing to show yet</h2>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- <section class="add-flower-page">
+            <div class="wrapper">
+                <form id="add-flower-form" action="add">
+                    <label for="flower-name">Flower name:</label>
+                    <input type="text" name="name" id="name" placeholder=" flower name...">
+                    <label for="stems">Stems:</label>
+                    <input type="text" name="stems" id="stems" placeholder=" list stems with commas...">
+                    <label for="stems">Image url:</label>
+                    <input type="text" name="imageUrl" id="imageUrl" placeholder=" place image url...">
+                    <label for="height">Height:</label>
+                    <input type="number" name="height" id="height" placeholder=" height in cm...">
+                    <label for="small">Price for small size:</label>
+                    <input type="number" name="small" id="small">
+                    <label for="medium">Price for medium size:</label>
+                    <input type="number" name="medium" id="medium">
+                    <label for="big">Price for big size:</label>
+                    <input type="number" name="big" id="big">
+                    
+                    <input type="submit" value="Add flower" id="add-flower-btn">
+                </form>
+            </div>
+        </section> -->
+
+        <!-- <section class="edit-flower-page">
+            <div class="wrapper">
+                <form id="edit-flower-form" action="edit">
+                    <label for="flower-name">Flower name:</label>
+                    <input type="text" name="name" id="name">
+                    <label for="stems">Stems:</label>
+                    <input type="text" name="stems" id="stems">
+                    <label for="stems">Image url:</label>
+                    <input type="text" name="imageUrl" id="imageUrl">
+                    <label for="height">Height:</label>
+                    <input type="number" name="height" id="height">
+                    <label for="small">Price for small size:</label>
+                    <input type="number" name="small" id="small">
+                    <label for="medium">Price for medium size:</label>
+                    <input type="number" name="medium" id="medium">
+                    <label for="big">Price for big size:</label>
+                    <input type="number" name="big" id="big">
+                    
+                    <input type="submit" value="edit flower" id="edit-flower-btn">
+                </form>
+            </div>
+        </section> -->
+    </main>
+
+    <footer>
+        <section class="footer-content">
+            <article class="coordinates">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam porro facere quod. Voluptatem ipsa.</p>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 1500-200-xx-xx</li>
+                    <li><i class="fas fa-envelope"></i> demo@demo.mail</li>
+                </ul>
+            </article>
+            <article class="copyright">
+                <p>&copy; Demo copyright All rights reserved</p>
+            </article>
+        </section>
+    </footer>
+</body>
+
+<script>
+    const playToggle = document.querySelector('.pause-btn');
+    const videoElement = document.querySelector('video');
+    playToggle.addEventListener('click', () => {
+        playToggle.classList.toggle('active');
+        videoElement.paused ? videoElement.play() : videoElement.pause();
+    })
+</script>
+
+</html>
