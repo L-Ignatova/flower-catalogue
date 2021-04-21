@@ -5,6 +5,7 @@ import { homePage } from "../controls/views/home.js";
 import { cataloguePage } from "../controls/views/feed.js";
 import { loginPage } from './views/login.js';
 import { registerPage } from './views/register.js';
+import { profilePage } from './views/profile.js';
 
 const container = document.getElementById('container');
 document.getElementById('logoutBtn').addEventListener('click', async (ev) => {
@@ -22,7 +23,7 @@ page('/register', decorateContext, registerPage);
 // page('/add', decorateContext, addPage);
 // page('/details/:id', decorateContext, detailsPage);
 // page('/edit/:id', decorateContext, editPage);
-// page('/profile', decorateContext, myListingsPage);
+page('/profile', decorateContext, profilePage);
 page.start()
 
 function decorateContext(ctx, next) {
