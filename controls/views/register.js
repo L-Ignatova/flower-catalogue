@@ -4,7 +4,7 @@ const registerTemplate = (onSubmit) => html`
 <section class="register-page">
     <div class="wrapper">
         <form @submit=${onSubmit} id="register-form" action="register">
-            <label for="first-name">Your name:</label>
+            <label for="name">Your name:</label>
             <input type="text" name="name" id="name" placeholder=" first and last name...">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder=" your email...">
@@ -26,11 +26,12 @@ export function registerPage(context) {
         ev.preventDefault();
 
         const formData = new FormData(ev.target);
+        const name = formData.get('name').trim();
         const email = formData.get('email').trim();
         const password = formData.get('password').trim();
         const repass = formData.get('repass').trim();
 
-        if (!password || !email) {
+        if (!password || !email || !name) {
             return alert('All fields are required!');
         } else if (password !== repass) {
             return alert('Passwords don\'t match!')

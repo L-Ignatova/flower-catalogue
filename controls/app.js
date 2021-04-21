@@ -3,6 +3,7 @@ import page from "https://unpkg.com/page/page.mjs";
 import { homePage } from "../controls/views/home.js";
 import { cataloguePage } from "../controls/views/feed.js";
 import { loginPage } from './views/login.js';
+import { registerPage } from './views/register.js';
 
 const container = document.getElementById('container');
 setUserNav()
@@ -10,7 +11,7 @@ setUserNav()
 page('/', decorateContext, homePage);
 page('/catalog', decorateContext, cataloguePage);
 page('/login', decorateContext, loginPage);
-// page('/register', decorateContext, registerPage);
+page('/register', decorateContext, registerPage);
 // page('/add', decorateContext, addPage);
 // page('/details/:id', decorateContext, detailsPage);
 // page('/edit/:id', decorateContext, editPage);
