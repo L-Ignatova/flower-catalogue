@@ -1,11 +1,18 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import page from "https://unpkg.com/page/page.mjs";
+import { logout } from "../controls/api/api.js";
 import { homePage } from "../controls/views/home.js";
 import { cataloguePage } from "../controls/views/feed.js";
 import { loginPage } from './views/login.js';
 import { registerPage } from './views/register.js';
 
 const container = document.getElementById('container');
+document.getElementById('logoutBtn').addEventListener('click', async (ev) => {
+    ev.preventDefault();
+    await logout();
+    page.redirect('/');
+    setUserNav();
+})
 setUserNav()
 
 page('/', decorateContext, homePage);

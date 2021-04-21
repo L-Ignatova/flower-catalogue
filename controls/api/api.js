@@ -21,9 +21,9 @@ export async function login(email, password) {
 }
 
 export async function logout() {
-    sessionStorag.removeItem('userEmail');
-	sessionStorage.removeItem('userId', data.localId);
-    sessionStorag.removeItem('token');
+    sessionStorage.removeItem('userEmail');
+	sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('token');
     return;
 }
 
@@ -33,7 +33,7 @@ export async function register(email, password) {
 		headers: 'Content-Type: application/json',
 		body: JSON.stringify({ email, password })
 	});
-    
+
     if (response.ok==false) {
         const error = await response.json();
         throw new Error(error.message);
