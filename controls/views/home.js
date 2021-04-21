@@ -1,4 +1,4 @@
-import {html} from 'https://unpkg.com/lit-html?module';
+import {html, render} from 'https://unpkg.com/lit-html?module';
 
 const homeTemplate = (clickToggle) => html`
 <section class="landing-page">
@@ -27,7 +27,7 @@ const homeTemplate = (clickToggle) => html`
 </section>
 `;
 
-export function hopePage(context) {
+export function homePage(context) {
     context.render(homeTemplate(clickToggle));
     context.setUserNav();
 

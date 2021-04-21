@@ -25,9 +25,9 @@ function setUserNav() {
     const email = sessionStorage.getItem('email');
     if (email) {
         document.getElementById('guest').style.display = 'none';
-        document.getElementById('user').style.display = 'inline-block';
+        document.getElementById('user').style.display = 'flex';
     } else {
         document.getElementById('user').style.display = 'none';
-        document.getElementById('guest').style.display = 'inline-block';
+        document.getElementById('guest').style.display = 'flex';
     }
 }
