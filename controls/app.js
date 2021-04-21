@@ -2,6 +2,7 @@ import { render } from "../node_modules/lit-html/lit-html.js";
 import page from "../node_modules/page/page.mjs";
 
 const container = document.getElementById('container');
+setUserNav()
 
 // page('/', decorateContext, homePage);
 // page('/catalog', decorateContext, catalogPage);
@@ -17,4 +18,15 @@ function decorateContext(ctx, next) {
     ctx.render = (content) => render(content, main);
     ctx.setUserNav = setUserNav;
     next();
+}
+
+function setUserNav() {
+    const email = sessionStorage.getItem('email');
+    if (email) {
+        document.getElementById('guest').style.display = 'none';
+        document.getElementById('user').style.display = 'inline-block';
+    } else {
+        document.getElementById('user').style.display = 'none';
+        document.getElementById('guest').style.display = 'inline-block';
+    }
 }
