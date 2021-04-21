@@ -11,7 +11,7 @@ const homeTemplate = (clickToggle) => html`
                 veniam.
                 Quas aperiam aspernatur, deleniti fugiat est necessitatibus asperiores quaerat molestiae. Illum,
                 dolores itaque. Qui magnam consequatur vel?</p>
-            <button class="discover-btn"><a href="#">Discover</a></button>
+            <button class="discover-btn"><a href="/catalog">Discover</a></button>
         </section>
 
         <section @click=${clickToggle} class="pause-btn"></section>
