@@ -4,7 +4,7 @@ import page from "../node_modules/page/page.mjs";
 const container = document.getElementById('container');
 setUserNav()
 
-// page('/', decorateContext, homePage);
+page('/', decorateContext, homePage);
 // page('/catalog', decorateContext, catalogPage);
 // page('/login', decorateContext, loginPage);
 // page('/register', decorateContext, registerPage);
@@ -12,10 +12,10 @@ setUserNav()
 // page('/details/:id', decorateContext, detailsPage);
 // page('/edit/:id', decorateContext, editPage);
 // page('/profile', decorateContext, myListingsPage);
-// page.start()
+page.start()
 
 function decorateContext(ctx, next) {
-    ctx.render = (content) => render(content, main);
+    ctx.render = (content) => render(content, container);
     ctx.setUserNav = setUserNav;
     next();
 }
