@@ -32,7 +32,8 @@ export function homePage(context) {
     context.setUserNav();
 
     function clickToggle(ev) {
-        const playToggle = ev.target;
+        const playToggle = document.querySelector('.pause-btn');
+        const videoElement = document.querySelector('video');
         playToggle.classList.toggle('active');
         videoElement.paused ? videoElement.play() : videoElement.pause();
     }
