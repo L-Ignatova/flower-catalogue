@@ -20,17 +20,10 @@ export async function login(email, password) {
 	return data;
 }
 
-export async function logout() {
-    sessionStorage.removeItem('userEmail');
-	sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('token');
-    return;
-}
-
 export async function register(email, password) {
-	const request = await fetch(registerUrl, {
+	const response = await fetch(registerUrl, {
 		method: 'post',
-		headers: 'Content-Type: application/json',
+		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({ email, password })
 	});
 
@@ -39,9 +32,16 @@ export async function register(email, password) {
         throw new Error(error.message);
     }
 
-	const data = await request.json();
+	const data = await response.json();
 	sessionStorage.setItem('userEmail', data.email);
 	sessionStorage.setItem('userId', data.localId);
 	sessionStorage.setItem('token', data.idToken);
 	return data;
+}
+
+export async function logout() {
+    sessionStorage.removeItem('userEmail');
+	sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('token');
+    return;
 }

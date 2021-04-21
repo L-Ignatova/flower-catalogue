@@ -1,4 +1,6 @@
 import {html} from 'https://unpkg.com/lit-html?module';
+import { register as reg } from "../api/api.js";
+
 
 const registerTemplate = (onSubmit) => html`
 <section class="register-page">
@@ -22,7 +24,7 @@ export function registerPage(context) {
     context.render(registerTemplate(onSubmit));
 
 
-    function onSubmit(ev) {
+    async function onSubmit(ev) {
         ev.preventDefault();
 
         const formData = new FormData(ev.target);
@@ -37,7 +39,7 @@ export function registerPage(context) {
             return alert('Passwords don\'t match!')
         }
 
-        console.log(email, password);
+        await reg(email, password);
         context.setUserNav();
         context.page.redirect('/catalog');
     }
