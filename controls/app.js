@@ -1,5 +1,6 @@
-import { render } from "../node_modules/lit-html/lit-html.js";
-import page from "../node_modules/page/page.mjs";
+import {html, render} from 'https://unpkg.com/lit-html?module';
+import page from "https://unpkg.com/page/page.mjs";
+import { homePage } from "../controls/views/home.js";
 
 const container = document.getElementById('container');
 setUserNav()

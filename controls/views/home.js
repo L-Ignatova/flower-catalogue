@@ -1,6 +1,6 @@
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import {html} from 'https://unpkg.com/lit-html?module';
 
-const homeTemplate = () => html`
+const homeTemplate = (clickToggle) => html`
 <section class="landing-page">
     <video src="/resources/video.mp4" muted loop autoplay poster="/resources/alt-background.jpg"></video>
     <div class="wrapper">
@@ -14,7 +14,7 @@ const homeTemplate = () => html`
             <button class="discover-btn"><a href="#">Discover</a></button>
         </section>
 
-        <section class="pause-btn"></section>
+        <section @click=${clickToggle} class="pause-btn"></section>
 
         <section class="social-media">
             <ul>
@@ -28,6 +28,12 @@ const homeTemplate = () => html`
 `;
 
 export function hopePage(context) {
-    context.render(homeTemplate());
+    context.render(homeTemplate(clickToggle));
     context.setUserNav();
+
+    function clickToggle(ev) {
+        const playToggle = ev.target;
+        playToggle.classList.toggle('active');
+        videoElement.paused ? videoElement.play() : videoElement.pause();
+    }
 }
