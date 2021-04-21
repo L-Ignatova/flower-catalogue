@@ -26,7 +26,7 @@ export function loginPage(context) {
         const password = formData.get('password').trim();
 
         if (!password || !email) {
-            return alert('All fields are required!')
+            return alert('All fields are required!');
         }
 
         console.log(email, password);
