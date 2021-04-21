@@ -1,12 +1,13 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import page from "https://unpkg.com/page/page.mjs";
 import { homePage } from "../controls/views/home.js";
+import { cataloguePage } from "../controls/views/feed.js";
 
 const container = document.getElementById('container');
 setUserNav()
 
 page('/', decorateContext, homePage);
-// page('/catalog', decorateContext, catalogPage);
+page('/catalog', decorateContext, cataloguePage);
 // page('/login', decorateContext, loginPage);
 // page('/register', decorateContext, registerPage);
 // page('/add', decorateContext, addPage);
