@@ -19,3 +19,15 @@ export async function getFlowerById(id) {
         throw new Error(err.message);
     }
 }
+
+export async function deleteFlower(id) {
+    try {
+        const response = await fetch(`${baseUrl}/flowers/${id}.json`, {
+            method: 'delete',
+        });
+        const data = await response.json();
+        return data;
+    } catch(err) {
+        throw new Error(err.message);
+    }
+}
