@@ -1,4 +1,4 @@
-import {html, render} from 'https://unpkg.com/lit-html?module';
+import {html} from 'https://unpkg.com/lit-html?module';
 import { getFlowers } from "../api/data.js";
 
 const catalogueTemplate = (flowers) => html`
@@ -30,5 +30,4 @@ export async function cataloguePage(context) {
     const flowers = await getFlowers();
     console.log(flowers);
     context.render(catalogueTemplate(flowers));
-
 }
