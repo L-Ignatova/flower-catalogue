@@ -32,12 +32,23 @@ export async function deleteFlower(id) {
     }
 }
 
-export async function createFlower(data) {
+export async function createFlower({name, stems, imageUrl, height, small, medium, big}, userId) {
     try {
         const response = await fetch(`${baseUrl}/flowers.json`, {
             method: 'post',
             headers: {'Content-type': 'application/json'},
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                'name': name,
+                'stems': stems,
+                'imageUrl': imageUrl,
+                'height': height,
+                'price': {
+                    'small': small,
+                    'medium': medium,
+                    'big': big
+                },
+                'creator': userId
+            })
         });
         const result = await response.json();
         return result;
