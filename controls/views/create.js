@@ -42,6 +42,8 @@ export async function createPage(context) {
         const big = Number(formData.get('big'));
         const userId = sessionStorage.getItem('userId');
 
-        createFlower({ name, stems, imageUrl, height, small, medium, big }, userId)
+        createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
+        context.page.redirect('/profile');
+
     }
 }
