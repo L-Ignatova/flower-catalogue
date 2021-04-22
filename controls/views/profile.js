@@ -1,6 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
+import { getFlowers } from "../api/data.js";
 
-const profileTemplate = (user, name) => html`
+const profileTemplate = (user, name, userFlowers) => html`
 <section class="profile">
     <div class="wrapper">
         <section class="profile-info">
@@ -12,37 +13,32 @@ const profileTemplate = (user, name) => html`
             </ul>
         </section>
         <h1 class="title">Your garden:</h1>
-        <section id="profile-feed">
-            <article class="flower-card">
-                <img src="/resources/bouquet_4.jpg" alt="flower 1">
-                <section class="flower-content">
-                    <section class="flower-text">
-                        <h4>Majesty palm</h4>
-                        <p>$15</p>
-                    </section>
-                    <section class="flower-details">
-                        <button class="details-btn">Details</button>
-                    </section>
-                </section>
-            </article>
-            <article class="flower-card">
-                <img src="/resources/bouquet_5.jpg" alt="flower 1">
-                <section class="flower-content">
-                    <section class="flower-text">
-                        <h4>Majesty palm</h4>
-                        <p>$15</p>
-                    </section>
-                    <section class="flower-details">
-                        <button class="details-btn">Details</button>
-                    </section>
-                </section>
-            </article>
-        </section>
-        <div id="empty-profile-feed">
-            <h2>Nothing to show yet</h2>
-        </div>
+        ${userFlowers.length == 0 
+            ? html`
+            <div id="empty-profile-feed">
+                <h2>Nothing to show yet</h2>
+            </div>
+            ` 
+            : userFlowers.map(x => flowerCard(x[0], x[1]))}
+
+        
     </div>
 </section>
+`;
+
+const flowerCard = (flowerKey, values) => html`
+<article class="flower-card">
+    <img src="${values.imageUrl}" alt="${values.name}">
+    <section class="flower-content">
+        <section class="flower-text">
+            <h4>${values.name}</h4>
+            <p>$${values.price.medium}</p>
+        </section>
+        <section id="${flowerKey}" class="flower-details">
+            <button class="details-btn"><a href="/details/${flowerKey}">Details</a></button>
+        </section>
+    </section>
+</article>
 `;
 
 export async function profilePage(context) {
@@ -53,6 +49,8 @@ export async function profilePage(context) {
     };
     const response = await fetch(`https://flower-shop-demo-c4c3b-default-rtdb.firebaseio.com/users/${user.userId}.json`)
     const data = await response.json();
-    context.render(profileTemplate(user, data.name));
-    context.page.redirect('/profile');
+
+    const allFlowers = await getFlowers();
+    const userFlowers = Object.entries(allFlowers).filter(([key, val]) => val.creator === user.userId);
+    context.render(profileTemplate(user, data.name, userFlowers));
 }
