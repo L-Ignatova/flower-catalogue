@@ -8,7 +8,7 @@ const profileTemplate = (user, name) => html`
             <ul class="profile-details">
                 <li><span>Email: </span> ${user.email}</li>
                 <li><span>Name: </span> ${name}</li>
-                <button class="add-new-flower"><a href="#">Add flower</a></button>
+                <button class="add-new-flower"><a href="/add">Add flower</a></button>
             </ul>
         </section>
         <h1 class="title">Your garden:</h1>
@@ -54,5 +54,5 @@ export async function profilePage(context) {
     const response = await fetch(`https://flower-shop-demo-c4c3b-default-rtdb.firebaseio.com/users/${user.userId}.json`)
     const data = await response.json();
     context.render(profileTemplate(user, data.name));
-    
+    context.page.redirect('/profile');
 }
