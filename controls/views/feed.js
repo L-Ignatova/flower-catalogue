@@ -19,7 +19,7 @@ const flowerCard = (flowerKey, values) => html`
             <h4>${values.name}</h4>
             <p>$${values.price.medium}</p>
         </section>
-        <section class="flower-details">
+        <section id="${flowerKey}" class="flower-details">
             <button class="details-btn"><a href="/details/${flowerKey}">Details</a></button>
         </section>
     </section>
