@@ -1,4 +1,4 @@
-import {html, render} from 'https://unpkg.com/lit-html?module';
+import {html} from 'https://unpkg.com/lit-html?module';
 import { createFlower } from "../api/data.js";
 
 const createTemplate = (onSubmit) => html`
@@ -42,8 +42,11 @@ export async function createPage(context) {
         const big = Number(formData.get('big'));
         const userId = sessionStorage.getItem('userId');
 
-        createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
-        context.page.redirect('/profile');
+        if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
+            return alert('All fields are required!');
+        }
 
+        await createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
+        context.page.redirect('/profile');
     }
 }
