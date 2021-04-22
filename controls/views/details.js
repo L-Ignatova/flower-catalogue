@@ -53,7 +53,7 @@ export async function detailsPage(context) {
     async function onDelete() {
         const confirmation = confirm('Are you sure you want to delete this flower?');
         if (confirmation) {
-            await deleteFlower();
+            await deleteFlower(flowerId);
             context.page.redirect('/catalog');
         }
     }
