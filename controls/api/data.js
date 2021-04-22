@@ -31,3 +31,31 @@ export async function deleteFlower(id) {
         throw new Error(err.message);
     }
 }
+
+export async function createFlower(data) {
+    try {
+        const response = await fetch(`${baseUrl}/flowers.json`, {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        return result;
+    } catch(err) {
+        throw new Error(err.message);
+    }
+}
+
+export async function editFlower(data, id) {
+    try {
+        const response = await fetch(`${baseUrl}/flowers/${id}.json`, {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        return result;
+    } catch(err) {
+        throw new Error(err.message);
+    }
+}
