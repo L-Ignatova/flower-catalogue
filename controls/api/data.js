@@ -59,9 +59,9 @@ export async function createFlower({name, stems, imageUrl, height, small, medium
 
 
 
-export async function editFlower({name, stems, imageUrl, height, small, medium, big}, userId) {
+export async function editFlower({name, stems, imageUrl, height, small, medium, big}, userId, flowerId) {
     try {
-        const response = await fetch(`${baseUrl}/flowers.json`, {
+        const response = await fetch(`${baseUrl}/flowers/${flowerId}.json`, {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({

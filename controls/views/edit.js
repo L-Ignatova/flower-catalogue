@@ -2,7 +2,7 @@ import {html} from 'https://unpkg.com/lit-html?module';
 import { editFlower, getFlowerById } from "../api/data.js";
 
 const editTemplate = (flower, onSubmit) => html`
-<section class="add-flower-page">
+<section class="edit-flower-page">
     <div class="wrapper">
         <form @submit=${onSubmit} id="add-flower-form" action="add">
             <label for="flower-name">Flower name:</label>
@@ -20,7 +20,7 @@ const editTemplate = (flower, onSubmit) => html`
             <label for="big">Price for big size:</label>
             <input type="number" name="big" id="big" .value="${flower.price.big}">
             
-            <input type="submit" value="Add flower" id="add-flower-btn">
+            <input type="submit" value="edit flower" id="edit-flower-btn">
         </form>
     </div>
 </section>
@@ -49,7 +49,7 @@ export async function editPage(context) {
             return alert('All fields are required!');
         }
 
-        await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
+        await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId, flowerId);
         context.page.redirect('/profile');
     }
 }

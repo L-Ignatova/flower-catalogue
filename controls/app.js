@@ -20,6 +20,7 @@ document.getElementById('logoutBtn').addEventListener('click', async (ev) => {
 setUserNav()
 
 page('/', decorateContext, homePage);
+page('/index.html', decorateContext, homePage);
 page('/catalog', decorateContext, cataloguePage);
 page('/login', decorateContext, loginPage);
 page('/register', decorateContext, registerPage);
