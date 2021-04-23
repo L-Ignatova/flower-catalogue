@@ -8,6 +8,7 @@ import { registerPage } from './views/register.js';
 import { profilePage } from './views/profile.js';
 import { detailsPage } from './views/details.js';
 import { createPage } from './views/create.js';
+import { editPage } from './views/edit.js';
 
 const container = document.getElementById('container');
 document.getElementById('logoutBtn').addEventListener('click', async (ev) => {
