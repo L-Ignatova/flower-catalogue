@@ -1,24 +1,24 @@
 import {html} from 'https://unpkg.com/lit-html?module';
-import { editFlower } from "../api/data.js";
+import { editFlower, getFlowerById } from "../api/data.js";
 
-const editTemplate = (onSubmit) => html`
+const editTemplate = (flower, onSubmit) => html`
 <section class="add-flower-page">
     <div class="wrapper">
         <form @submit=${onSubmit} id="add-flower-form" action="add">
             <label for="flower-name">Flower name:</label>
-            <input type="text" name="name" id="name" placeholder=" flower name...">
+            <input type="text" name="name" id="name" placeholder=" flower name..." .value="${flower.name}">
             <label for="stems">Stems:</label>
-            <input type="text" name="stems" id="stems" placeholder=" list stems with commas...">
+            <input type="text" name="stems" id="stems" placeholder=" list stems with commas..." .value="${flower.stems}">
             <label for="stems">Image url:</label>
-            <input type="text" name="imageUrl" id="imageUrl" placeholder=" place image url...">
+            <input type="text" name="imageUrl" id="imageUrl" placeholder=" place image url..." .value="${flower.imageUrl}">
             <label for="height">Height:</label>
-            <input type="number" name="height" id="height" placeholder=" height in cm...">
+            <input type="number" name="height" id="height" placeholder=" height in cm..." .value="${flower.height}">
             <label for="small">Price for small size:</label>
-            <input type="number" name="small" id="small">
+            <input type="number" name="small" id="small" .value="${flower.price.small}">
             <label for="medium">Price for medium size:</label>
-            <input type="number" name="medium" id="medium">
+            <input type="number" name="medium" id="medium" .value="${flower.price.medium}">
             <label for="big">Price for big size:</label>
-            <input type="number" name="big" id="big">
+            <input type="number" name="big" id="big" .value="${flower.price.big}">
             
             <input type="submit" value="Add flower" id="add-flower-btn">
         </form>
@@ -27,7 +27,10 @@ const editTemplate = (onSubmit) => html`
 `;
 
 export async function editPage(context) {
-    context.render(editTemplate(onSubmit));
+    const flowerId = context.params.id;
+    const flower = await getFlowerById(flowerId);
+
+    context.render(editTemplate(flower, onSubmit));
 
     async function onSubmit(ev) {
         ev.preventDefault();
@@ -46,7 +49,7 @@ export async function editPage(context) {
             return alert('All fields are required!');
         }
 
-        await createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
+        await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
         context.page.redirect('/profile');
     }
 }
