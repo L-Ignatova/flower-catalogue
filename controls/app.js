@@ -24,7 +24,7 @@ page('/login', decorateContext, loginPage);
 page('/register', decorateContext, registerPage);
 page('/add', decorateContext, createPage);
 page('/details/:id', decorateContext, detailsPage);
-// page('/edit/:id', decorateContext, editPage);
+page('/edit/:id', decorateContext, editPage);
 page('/profile', decorateContext, profilePage);
 page.start()
 
