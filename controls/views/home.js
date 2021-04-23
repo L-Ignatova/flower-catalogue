@@ -3,7 +3,6 @@ import {html, render} from 'https://unpkg.com/lit-html?module';
 const homeTemplate = (clickToggle) => html`
 <section class="landing-page">
     <video src="/resources/video.mp4" muted loop autoplay poster="/resources/alt-background.jpg"></video>
-    <div class="wrapper">
         <section class="main-content">
             <h1>Spring is here</h1>
             <h2>Flowers for every occasion</h2>
@@ -23,7 +22,6 @@ const homeTemplate = (clickToggle) => html`
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
             </ul>
         </section>
-    </div>
 </section>
 `;
 

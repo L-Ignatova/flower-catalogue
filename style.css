@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: var(--light-pink);
@@ -38,16 +38,7 @@ nav {
     align-items: center;
     margin: auto;
 }
-#logo {
-    padding: 10px;
-}
-#logo p a {
-    font-family: 'Great Vibes', sans-serif;
-    text-decoration: none;
-    color: var(--highlight);
-    text-shadow: 3px 0px 5px var(--highlight);
-    font-size: 3em;
-}
+
 .nav-menu {
     display: flex;
     padding: 20px;
@@ -64,7 +55,6 @@ ul#user {
     transition: 0.1s;
 }
 .nav-menu ul li a {
-    text-decoration: none;
     text-transform: uppercase;
     color: inherit;
 }
@@ -75,16 +65,19 @@ ul#user {
 }
 
 #container {
+    min-height: 100vh;
     width: 100%;
     top: 0px;
     left: 0px;
-    margin: auto;
+    margin: 0 auto;
 }
 .landing-page{
+    top: 0;
     height: 100vh;
 }
 video {
     position: absolute;
+    top: 0px;
     width: 100%;
     height: 100vh;
     object-fit: cover;
@@ -92,21 +85,26 @@ video {
 }
 .wrapper {
     max-width: 1200px;
-    margin: auto;
-    height: 100%;
+    min-height: 100vh;
+    margin: 150px auto;
+    margin-bottom: 90px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     z-index: -10;
 }
 .main-content {
-    position: relative;
+    position: absolute;
     width: 700px;
+    top: 300px;
+    left: 150px;
     margin: 20px;
     align-content: center;
     padding: 40px;
     background-color: rgb(255,255,255,0.8);
     border-radius: 20px;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 50%);
     z-index: 10;
 }
 
@@ -130,7 +128,6 @@ video {
     box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.5);
 }
 .discover-btn a {
-    text-decoration: none;
     text-transform: uppercase;
     transition: 0.3s;
 }
@@ -220,33 +217,15 @@ footer {
     display: flex;
     align-items: center;
 }
-.details-btn,
-button.edit,
-button.delete,
+button,
 #login-form input[type=submit],
-#register-form input[type=submit],
-.add-new-flower,
-#add-flower-btn,
-#edit-flower-btn {
+#register-form input[type=submit] {
     text-transform: uppercase;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     background-color: var(--light-pink);
     cursor: pointer;
-}
-.feed .wrapper,
-.login-page .wrapper,
-.register-page .wrapper,
-.profile .wrapper,
-.add-flower-page .wrapper,
-.edit-flower-page .wrapper {
-    margin-top: 90px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.feed .wrapper {
-    height: 100vh;
 }
 
 .details-card {
@@ -283,11 +262,7 @@ p span {
     cursor: pointer;
 }
 
-
-#login-form,
-#add-flower-form,
-#register-form,
-#edit-flower-form  {
+form  {
     height: 100vh;
     display: flex;
     flex-direction: column;
