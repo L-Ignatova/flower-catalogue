@@ -30,9 +30,13 @@ export function loginPage(context) {
             return alert('All fields are required!');
         }
 
-        await login(email, password);
-
-        context.setUserNav();
-        context.page.redirect('/catalog');
+        try {
+            await login(email, password);
+            context.setUserNav();
+            context.page.redirect('/catalog');
+        } catch(err) {
+            return alert(err);
+        }
+        
     }
 }
