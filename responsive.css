@@ -1,0 +1,14 @@
+@media all and (max-width: 900px) {
+    .main-content {
+        max-width: 90%;
+        top: 100px;
+        left: 10px;
+    }
+    footer li,
+    footer p {
+        font-size: 12px;
+    }
+    nav a {
+        font-size: 14px;
+    }
+}
