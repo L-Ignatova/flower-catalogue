@@ -319,7 +319,7 @@ form  {
     margin: 50px;
 }
 .profile .wrapper {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #add-flower-form label,
