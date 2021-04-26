@@ -28,6 +28,5 @@ const flowerCard = (flowerKey, values) => html`
 
 export async function cataloguePage(context) {
     const flowers = await getFlowers();
-    console.log(flowers);
     context.render(catalogueTemplate(flowers));
 }
