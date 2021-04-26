@@ -1,4 +1,5 @@
-const apiKey = 'AIzaSyBKSWuGdwmN3RaH01U0N3mi5PhRtCyr7Xo';
+import {firebaseConfig} from "./config.js";
+const apiKey = firebaseConfig.apiKey;
 const registerUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
 const loginUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
 
