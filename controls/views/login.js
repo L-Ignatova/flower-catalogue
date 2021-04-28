@@ -10,6 +10,7 @@ const loginTemplate = (onSubmit) => html`
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" placeholder=" your password...">
             <input type="submit" value="Login">
+            <p>Not registered? Not to worry - do that <a href="/register" style="text-decoration: underline">here!</a></p>
         </form>
     </div>
 </section>
