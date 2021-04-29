@@ -11,8 +11,8 @@ export async function login(email, password) {
 		body: JSON.stringify({ email, password })
 	});
     if (response.ok==false) {
-        const error = await response.json();
-        throw new Error(error.message);
+        // const error = await response.json();
+        throw new Error(`No such user exists yet`);
     }
 	const data = await response.json();
 	sessionStorage.setItem('userEmail', data.email);
@@ -29,8 +29,8 @@ export async function register(email, password) {
 	});
 
     if (response.ok==false) {
-        const error = await response.json();
-        throw new Error(error.message);
+        // const error = await response.json();
+        throw new Error(`Registration failed, an error occured`);
     }
 
 	const data = await response.json();

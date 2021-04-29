@@ -1,5 +1,6 @@
 import {html} from 'https://unpkg.com/lit-html?module';
 import { register as reg } from "../api/api.js";
+import { notify } from './notification.js';
 
 
 const registerTemplate = (onSubmit) => html`
@@ -32,15 +33,19 @@ export function registerPage(context) {
         const email = formData.get('email').trim();
         const password = formData.get('password').trim();
         const repass = formData.get('repass').trim();
+        
+        try { 
+            if (!password || !email || !name) {
+                throw new Error('All fields are required!');
+            } else if (password !== repass) {
+                throw new Error('Passwords don\'t match!')
+            }
 
-        if (!password || !email || !name) {
-            return alert('All fields are required!');
-        } else if (password !== repass) {
-            return alert('Passwords don\'t match!')
+            await reg(email, password);
+            context.setUserNav();
+            context.page.redirect('/catalog');
+        } catch(err) {
+            notify(err.message);
         }
-
-        await reg(email, password);
-        context.setUserNav();
-        context.page.redirect('/catalog');
     }
 }
