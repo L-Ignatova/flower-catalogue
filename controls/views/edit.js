@@ -1,5 +1,6 @@
 import {html} from 'https://unpkg.com/lit-html?module';
 import { editFlower, getFlowerById } from "../api/data.js";
+import { notify } from './notification.js';
 
 const editTemplate = (flower, onSubmit) => html`
 <section class="edit-flower-page">
@@ -45,11 +46,15 @@ export async function editPage(context) {
         const big = Number(formData.get('big'));
         const userId = sessionStorage.getItem('userId');
 
-        if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
-            return alert('All fields are required!');
-        }
+        try {
+            if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
+                throw new Error('All fields are required!');
+            }
 
-        await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId, flowerId);
-        context.page.redirect('/profile');
+            await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId, flowerId);
+            context.page.redirect('/profile');
+        } catch(err) {
+            notify(err.message);
+        }
     }
 }

@@ -42,11 +42,15 @@ export async function createPage(context) {
         const big = Number(formData.get('big'));
         const userId = sessionStorage.getItem('userId');
 
-        if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
-            return alert('All fields are required!');
-        }
+        try {
+            if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
+                throw new Error('All fields are required!');
+            }
 
-        await createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
-        context.page.redirect('/profile');
+            await createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
+            context.page.redirect('/profile');
+        } catch(err) {
+            notify(err.message);
+        }
     }
 }
