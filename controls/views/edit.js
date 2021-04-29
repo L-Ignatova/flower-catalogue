@@ -49,6 +49,10 @@ export async function editPage(context) {
         try {
             if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
                 throw new Error('All fields are required!');
+            } else if (!userId) {
+                throw new Error('Not a registered user!');
+            } else if (userId !== flower.creator) {
+                throw new Error('Shoo! You didn\'t create this, you can\'t edit!');
             }
 
             await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId, flowerId);

@@ -46,6 +46,9 @@ export async function createPage(context) {
             if (!name || !stems || !imageUrl || !height || !small || !medium || !big) {
                 throw new Error('All fields are required!');
             }
+            if (!userId) {
+                throw new Error('Not a registered user!');
+            }
 
             await createFlower({ name, stems, imageUrl, height, small, medium, big }, userId);
             context.page.redirect('/profile');
