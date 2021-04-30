@@ -57,7 +57,22 @@ export async function createFlower({name, stems, imageUrl, height, small, medium
     }
 }
 
-
+export async function createUserEntry(email, name, userId) {
+    try {
+        const response = await fetch(`${baseUrl}/users/${userId}.json`, {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'email': email,
+                'name': name
+            })
+        });
+        const result = await response.json();
+        return result;
+    } catch(err) {
+        throw new Error(err.message);
+    }
+}
 
 export async function editFlower({name, stems, imageUrl, height, small, medium, big, flowerLikes}, userId, flowerId) {
     try {

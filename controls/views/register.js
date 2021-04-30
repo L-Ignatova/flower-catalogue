@@ -1,5 +1,6 @@
 import {html} from 'https://unpkg.com/lit-html?module';
 import { register as reg } from "../api/api.js";
+import { createUserEntry } from '../api/data.js';
 import { notify } from './notification.js';
 
 
@@ -39,9 +40,14 @@ export function registerPage(context) {
                 throw new Error('All fields are required!');
             } else if (password !== repass) {
                 throw new Error('Passwords don\'t match!')
+            } else if (password.length < 6) {
+                throw new Error('Password should be at least 6 characters long!')
             }
 
-            await reg(email, password);
+            const isOk = await reg(email, password);
+            if (isOk) {
+                await createUserEntry(email, name, isOk.localId);
+            }
             context.setUserNav();
             context.page.redirect('/catalog');
         } catch(err) {
