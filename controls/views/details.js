@@ -19,15 +19,18 @@ const detailsTemplate = (flowerId, flower, isCreator,hasLiked, onDelete,onLike) 
                         </select>
                     </p>
                     <p id="price"><span>Price: </span>$${flower.price.medium}</p>
-                    <p>${flower.likes ? Object.values(flower.likes).length : 0} Likes ${hasLiked ? '' : html`<i @click=${onLike} class="fas fa-heart"></i>`} </p>
+                    <p>${flower.likes 
+                        ? Object.values(flower.likes).length : 0} Likes ${hasLiked ? '' 
+                        : html`<i @click=${onLike} class="fas fa-heart"></i>`} </p>
                 </div>
                 <div class="buttons">
-                    ${isCreator ? html`
+                    ${isCreator 
+                        ? html`
                     <div class="edit-del-btns">
                         <button class="edit"><a href="/edit/${flowerId}">edit</a></button>
                         <button @click=${onDelete} class="delete">delete</button>
-                    </div>
-                    ` : ''}
+                    </div>` 
+                        : ''}
                     
                 </div>
             </article>
