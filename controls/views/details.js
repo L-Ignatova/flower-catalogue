@@ -1,7 +1,7 @@
 import {html} from 'https://unpkg.com/lit-html?module';
-import { getFlowerById, deleteFlower } from "../api/data.js";
+import { getFlowerById, deleteFlower, likeFlower } from "../api/data.js";
 
-const detailsTemplate = (flowerId, flower, isCreator, onDelete) => html`
+const detailsTemplate = (flowerId, flower, isCreator,hasLiked, onDelete,onLike) => html`
 <section class="details-page">
     <div class="wrapper">
         <section class="details-card">
@@ -19,6 +19,7 @@ const detailsTemplate = (flowerId, flower, isCreator, onDelete) => html`
                         </select>
                     </p>
                     <p id="price"><span>Price: </span>$${flower.price.medium}</p>
+                    <p>${flower.likes ? Object.values(flower.likes).length : 0} Likes ${hasLiked ? '' : html`<i @click=${onLike} class="fas fa-heart"></i>`} </p>
                 </div>
                 <div class="buttons">
                     ${isCreator ? html`
@@ -37,12 +38,15 @@ const detailsTemplate = (flowerId, flower, isCreator, onDelete) => html`
 
 export async function detailsPage(context) {
     const userId = sessionStorage.getItem('userId');
+    const userEmail = sessionStorage.getItem('userEmail');
     const flowerId = context.params.id;
 
     const flower = await getFlowerById(flowerId);
     const isCreator = userId === flower.creator;
 
-    context.render(detailsTemplate(flowerId, flower, isCreator, onDelete));
+    const hasLiked = flower.likes ? Object.values(flower.likes).some(like => like.creator == userEmail) : false;
+
+    context.render(detailsTemplate(flowerId, flower, isCreator,hasLiked, onDelete,onLike));
     document.getElementById('size-choice').addEventListener('change', ev => {
         const priceTag = document.getElementById('price');
         const element = ev.target;
@@ -56,6 +60,11 @@ export async function detailsPage(context) {
             await deleteFlower(flowerId);
             context.page.redirect('/catalog');
         }
+    }
+    async function onLike(e) {
+        await likeFlower(flowerId, userEmail);
+        e.target.style.display = 'none';
+        detailsPage(context);
     }
 
 }
