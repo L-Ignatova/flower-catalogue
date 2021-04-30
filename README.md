@@ -17,6 +17,7 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 ## ToDo list
 - [x] notifications
 - [x] error handling
+- [x] likes
 - [ ] testing
 - [ ] pagination (maybe, will have to rewrite http requests)
 
