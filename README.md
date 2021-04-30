@@ -14,12 +14,10 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 - **Details page** - a page with the details of the specific entry - name, what it's made of, other parameters, including a dropdown menu of the size which changes the price depending on what's chosen. If the user is the creator of the entry, buttons for ***Edit*** and ***Delete*** will show. Delete option will ask for confirmation before actually deleting the entry.
 - **Edit page** - a page autofilled with the entry's current details. Will send an update to the database upon submitting, and redirects to the profile page.
 
-## TBC with:
+## ToDo list
 - [x] notifications
 - [x] error handling
-- [ ] likes
 - [ ] testing
-- [ ] comments (maybe)
 - [ ] pagination (maybe, will have to rewrite http requests)
 
 will add a link when deployed
