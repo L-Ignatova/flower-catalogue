@@ -83,3 +83,19 @@ export async function editFlower({name, stems, imageUrl, height, small, medium, 
         throw new Error(err.message);
     }
 }
+
+export async function likeFlower(flowerId, userEmail) {
+    try {
+        const response = await fetch(`${baseUrl}/flowers/${flowerId}/likes.json`, {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'creator': userEmail
+            })
+        });
+        const result = await response.json();
+        return result;
+    } catch(err) {
+        throw new Error(err.message);
+    }
+}
