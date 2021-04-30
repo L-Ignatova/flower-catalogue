@@ -11,7 +11,7 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 - **Profile page** - a profile page unique to every user - displays name and email, and a personalised feed with all entries they've created on the website. They also have the option to create an entry.
 - **Create entry page** - a page designed to create a new entry to the database - optional only for registered users.
 - **Catalogue page** - a page with all entries in the database regardless of who created them. Upon clicking ***Details*** button, the user is redirected to the Detals page on the respective entry.
-- **Details page** - a page with the details of the specific entry - name, what it's made of, other parameters, including a dropdown menu of the size which changes the price depending on what's chosen. If the user is the creator of the entry, buttons for ***Edit*** and ***Delete*** will show. Delete option will ask for confirmation before actually deleting the entry.
+- **Details page** - a page with the details of the specific entry - name, what it's made of, other parameters, including a dropdown menu of the size which changes the price depending on what's chosen. If the user is the creator of the entry, buttons for ***Edit*** and ***Delete*** will show. Delete option will ask for confirmation before actually deleting the entry. The page also shows the number of ***Likes*** an entry has gotten from registered users. If a user hasn't liked yet, an option to do so will be visible. If he has already liked an entry once, it won't show. Upon like, entry re-renders with new like data.
 - **Edit page** - a page autofilled with the entry's current details. Will send an update to the database upon submitting, and redirects to the profile page.
 
 ## ToDo list
