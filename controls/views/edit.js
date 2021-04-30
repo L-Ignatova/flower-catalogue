@@ -30,6 +30,7 @@ const editTemplate = (flower, onSubmit) => html`
 export async function editPage(context) {
     const flowerId = context.params.id;
     const flower = await getFlowerById(flowerId);
+    const flowerLikes = flower.likes;
 
     context.render(editTemplate(flower, onSubmit));
 
@@ -55,7 +56,7 @@ export async function editPage(context) {
                 throw new Error('Shoo! You didn\'t create this, you can\'t edit!');
             }
 
-            await editFlower({ name, stems, imageUrl, height, small, medium, big }, userId, flowerId);
+            await editFlower({ name, stems, imageUrl, height, small, medium, big,flowerLikes }, userId, flowerId);
             context.page.redirect('/profile');
         } catch(err) {
             notify(err.message);
