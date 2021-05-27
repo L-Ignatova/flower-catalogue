@@ -1,0 +1,19 @@
+{
+  "name": "flowershop",
+  "version": "1.0.0",
+  "description": "A flower catalogue SPA where users can login & register, create, edit & delete entries. They also have a profile page with their own catalogue of what they've created so far",
+  "main": "./controls/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L-Ignatova/flower-catalogue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/L-Ignatova/flower-catalogue/issues"
+  },
+  "homepage": "https://github.com/L-Ignatova/flower-catalogue#readme"
+}
