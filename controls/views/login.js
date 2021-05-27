@@ -12,6 +12,7 @@ const loginTemplate = (onSubmit) => html`
             <input type="password" name="password" id="password" placeholder=" your password...">
             <input type="submit" value="Login">
             <p>Not registered? Not to worry - do that <a href="/register" style="text-decoration: underline">here!</a></p>
+            <p style="color:red">Note: Website is for academic purposes. Do not use real email and password!</p>
         </form>
     </div>
 </section>
