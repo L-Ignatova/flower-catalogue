@@ -1,4 +1,4 @@
-import {html} from 'https://unpkg.com/lit-html?module';
+import {html} from '../../node_modules/lit-html/lit-html.js';
 import { register as reg } from "../api/api.js";
 import { createUserEntry } from '../api/data.js';
 import { notify } from './notification.js';

@@ -1,4 +1,4 @@
-import {html} from 'https://unpkg.com/lit-html?module';
+import {html} from '../../node_modules/lit-html/lit-html.js';
 import { getFlowerById, deleteFlower, likeFlower } from "../api/data.js";
 
 const detailsTemplate = (flowerId, flower, isCreator,hasLiked, onDelete,onLike) => html`

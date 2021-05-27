@@ -1,4 +1,4 @@
-import {html, render} from 'https://unpkg.com/lit-html?module';
+import {html, render} from '../node_modules/lit-html/lit-html.js';
 import page from "https://unpkg.com/page/page.mjs";
 import { logout } from "../controls/api/api.js";
 import { homePage } from "../controls/views/home.js";

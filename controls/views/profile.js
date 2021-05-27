@@ -1,4 +1,4 @@
-import {html, render} from 'https://unpkg.com/lit-html?module';
+import {html, render} from '../../node_modules/lit-html/lit-html.js';
 import { getFlowers } from "../api/data.js";
 
 const profileTemplate = (user, name, userFlowers) => html`

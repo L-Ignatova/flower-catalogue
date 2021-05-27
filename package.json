@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/L-Ignatova/flower-catalogue/issues"
   },
-  "homepage": "https://github.com/L-Ignatova/flower-catalogue#readme"
+  "homepage": "https://github.com/L-Ignatova/flower-catalogue#readme",
+  "dependencies": {
+    "lit-html": "^1.4.1"
+  }
 }
