@@ -4,7 +4,8 @@
   "description": "A flower catalogue SPA where users can login & register, create, edit & delete entries. They also have a profile page with their own catalogue of what they've created so far",
   "main": "./controls/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./controls/app.js"
   },
   "repository": {
     "type": "git",
