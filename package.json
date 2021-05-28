@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "A flower catalogue SPA where users can login & register, create, edit & delete entries. They also have a profile page with their own catalogue of what they've created so far",
   "main": "./controls/app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "index.html"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/L-Ignatova/flower-catalogue#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "lit-html": "^1.4.1",
     "page": "^1.11.6"
   }
