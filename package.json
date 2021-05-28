@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./controls/app.js"
+    "start": "index.html"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/L-Ignatova/flower-catalogue#readme",
   "dependencies": {
-    "lit-html": "^1.4.1"
+    "lit-html": "^1.4.1",
+    "page": "^1.11.6"
   }
 }
