@@ -1,12 +1,14 @@
 import {html} from '../../node_modules/lit-html/lit-html.js';
-import { getFlowers } from "../api/data.js";
+import { defaultDatabase } from "../api/config.js";
+import { notify } from "./notification.js";
 
-const catalogueTemplate = (flowers) => html`
+const catalogueTemplate = (flowers, onLoadMore) => html`
 <section class="feed">
     <div class="wrapper">
         ${flowers.length == 0 
                 ? html`<p>No flowers in database.</p>` 
                 : Object.entries(flowers).map(([k, val]) => flowerCard(k, val))}
+        <button @click=${onLoadMore} style="margin:50px; padding: 15px 20px">Load more flowers</button>
     </div>
 </section>
 `;
@@ -27,6 +29,35 @@ const flowerCard = (flowerKey, values) => html`
 `;
 
 export async function cataloguePage(context) {
-    const flowers = await getFlowers();
-    context.render(catalogueTemplate(flowers));
+    const size = 3;
+    let startingIndex = "0";
+    let dict = {};
+    
+    let query = defaultDatabase.ref('flowers').orderByKey().startAt(startingIndex).limitToFirst(size);
+    await query.once("value")
+        .then((snapshot) => {
+            snapshot.forEach((childrenShap) => {
+                dict[childrenShap.key] = childrenShap.val()
+            })
+    });
+    context.render(catalogueTemplate(dict, onLoadMore));
+    startingIndex = Object.keys(dict)[Object.keys(dict).length - 1];
+
+    async function onLoadMore(ev) {
+        let initialLength = Object.keys(dict).length;
+        query = defaultDatabase.ref('flowers').orderByKey().startAt(startingIndex).limitToFirst(size+1);
+        await query.once("value")
+            .then((snapshot) => {
+                snapshot.forEach((childrenShap) => {
+                    dict[childrenShap.key] = childrenShap.val()
+                })
+        });
+        if (initialLength == Object.keys(dict).length) {
+            notify("No more flowers to load");
+        } else {
+            context.render(catalogueTemplate(dict, onLoadMore));
+            startingIndex = Object.keys(dict)[Object.keys(dict).length - 1];
+        }
+        
+    }
 }

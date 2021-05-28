@@ -19,6 +19,6 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 - [x] error handling
 - [x] likes
 - [ ] testing
-- [ ] pagination (maybe, will have to rewrite http requests)
+- [x] pagination (maybe, will have to rewrite http requests)
 
 will add a link when deployed
