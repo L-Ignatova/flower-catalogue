@@ -1,5 +1,5 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
-import page from "https://unpkg.com/page/page.mjs";
+import page from "../node_modules/page/page.mjs";
 import { logout } from "../controls/api/api.js";
 import { homePage } from "../controls/views/home.js";
 import { cataloguePage } from "../controls/views/feed.js";
