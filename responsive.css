@@ -4,11 +4,29 @@
         top: 100px;
         left: 10px;
     }
+    footer {
+        position: relative;
+    }
     footer li,
     footer p {
         font-size: 12px;
     }
+    .nav-menu {
+        padding: 10px;
+    }
     nav a {
         font-size: 14px;
+    }
+    .main-content {
+        padding: 20px 30px;
+    }
+    .main-content h1 {
+        font-size: 1.5em;
+    }
+    .main-content h2 {
+        font-size: 1.2em;
+    }
+    .pause-btn, .social-media {
+        bottom: 30px;
     }
 }
