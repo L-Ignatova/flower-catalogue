@@ -21,4 +21,5 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 - [ ] testing
 - [x] pagination
 
-will add a link when deployed
+## Deployment
+Deployed with Heroku at [https://flower-catalogue-app.herokuapp.com/](https://flower-catalogue-app.herokuapp.com/)
