@@ -14,6 +14,10 @@ Practice things learned in SoftUni JS Apps course & learn how to use a BaaS like
 - **Details page** - a page with the details of the specific entry - name, what it's made of, other parameters, including a dropdown menu of the size which changes the price depending on what's chosen. If the user is the creator of the entry, buttons for ***Edit*** and ***Delete*** will show. Delete option will ask for confirmation before actually deleting the entry. The page also shows the number of ***Likes*** an entry has gotten from registered users. If a user hasn't liked yet, an option to do so will be visible. If he has already liked an entry once, it won't show. Upon like, entry re-renders with new like data.
 - **Edit page** - a page autofilled with the entry's current details. Will send an update to the database upon submitting, and redirects to the profile page.
 
+## Test user
+email: test@test.bg
+pass: 123123
+
 ## ToDo list
 - [x] notifications
 - [x] error handling
